@@ -22,7 +22,10 @@ class AppTheme {
       assert( selectColor <= colorList.length - 1, 'El color seleccionado es mayor a el numero del arreglo'); 
 
   ThemeData getThemeData () => ThemeData(
-    colorSchemeSeed: colorList[selectColor]
+    colorSchemeSeed: colorList[selectColor],
+    appBarTheme: const AppBarTheme(
+      centerTitle: false,
+    )
   );
 
 
