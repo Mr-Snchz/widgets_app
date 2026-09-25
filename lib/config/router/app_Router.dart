@@ -8,18 +8,21 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      name: HomeScreen.name,
       builder: ((context, state) {
         return HomeScreen();
       })
     ),
     GoRoute(
       path: '/buttons',
+      name: ButtonsScreen.name,
       builder: ((context, state) {
         return ButtonsScreen();
       })
     ),
     GoRoute(
       path: '/cards',
+      name: CardsScreen.name,
       builder: (context, state) {
         return CardsScreen();
       }
