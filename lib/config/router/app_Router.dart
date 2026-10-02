@@ -44,6 +44,14 @@ final GoRouter router = GoRouter(
       }
     ),
 
+    GoRoute(
+      path: '/animated_Screen',
+      name: AnimatedScreen.name,
+      builder: (context ,state ){
+        return AnimatedScreen();
+      }
+      )
+
 
   ]
   );

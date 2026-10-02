@@ -43,6 +43,13 @@ const appMenuItems = <MenuItem>[
   subtitle: 'Indicadores en pantalla', 
   link: '/snackbar_screen', 
   icon: Icons.info_outline_rounded, 
-  )
+  ),
+
+  MenuItem(
+    title: 'Animated Screen', 
+    subtitle: 'Cuadro Animado ', 
+    link: '/animated_Screen', 
+    icon: Icons.play_arrow_outlined
+    )
 
 ];
