@@ -50,6 +50,14 @@ final GoRouter router = GoRouter(
       builder: (context ,state ){
         return AnimatedScreen();
       }
+      ),
+    
+    GoRoute(
+      path: '/ui_controls_screen',
+      name: UiControlsScreen.name,
+      builder: (context ,state ){
+        return UiControlsScreen();
+      }
       )
 
 

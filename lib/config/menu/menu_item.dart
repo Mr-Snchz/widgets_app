@@ -50,6 +50,13 @@ const appMenuItems = <MenuItem>[
     subtitle: 'Cuadro Animado ', 
     link: '/animated_Screen', 
     icon: Icons.play_arrow_outlined
+    ),
+
+  MenuItem(
+    title: 'Ui Controls Screen', 
+    subtitle: 'Muchos controles juntos ', 
+    link: '/ui_controls_screen', 
+    icon: Icons.play_circle_outlined
     )
 
 ];
