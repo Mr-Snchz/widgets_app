@@ -57,6 +57,13 @@ const appMenuItems = <MenuItem>[
     subtitle: 'Muchos controles juntos ', 
     link: '/ui_controls_screen', 
     icon: Icons.play_circle_outlined
-    )
+    ),
+  
+  MenuItem(
+    title: 'Tutorial', 
+    subtitle: 'Nos muestra como funciona la aplicacion', 
+    link: '/tutorial_screen', 
+    icon: Icons.accessibility_new_rounded
+  )
 
 ];
