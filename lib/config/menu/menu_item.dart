@@ -64,6 +64,14 @@ const appMenuItems = <MenuItem>[
     subtitle: 'Nos muestra como funciona la aplicacion', 
     link: '/tutorial_screen', 
     icon: Icons.accessibility_new_rounded
+  ),
+
+  MenuItem(
+    title: 'Infinity Scroll', 
+    subtitle: 'Nos muestra un infiniti scrooll ', 
+    link: '/infinity_scrool_screen', 
+    icon: Icons.list_alt_rounded,
   )
+  
 
 ];

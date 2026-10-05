@@ -66,6 +66,14 @@ final GoRouter router = GoRouter(
       builder: (context , state ) {
         return AppTutorialScreen();
       }
+      ),
+
+    GoRoute(
+      path: '/infinity_scrool_screen',
+      name: InifinityScroolScreen.name,
+      builder: (context , state ) {
+        return InifinityScroolScreen();
+      }
       )
 
   ]

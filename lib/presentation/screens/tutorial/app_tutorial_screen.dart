@@ -1,4 +1,5 @@
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,13 +25,47 @@ final listSlide = <SlideInfo> [
 
 
 
-class AppTutorialScreen extends StatelessWidget {
+class AppTutorialScreen extends StatefulWidget {
 
 
 
   static const name = 'tutorial_screen';
   const AppTutorialScreen({super.key});
 
+  
+
+  @override
+  State<AppTutorialScreen> createState() => _AppTutorialScreenState();
+}
+  
+class _AppTutorialScreenState extends State<AppTutorialScreen> {
+
+     final PageController pageViewController = PageController(); 
+     bool endPageView = false;
+ 
+  @override
+  void initState() {
+    super.initState();
+    
+    pageViewController.addListener( () {
+        final page = pageViewController.page ?? 0; 
+
+        if( !endPageView && page >= (listSlide.length - 1.7)){
+          setState(() {
+            endPageView = true;
+          });
+        }
+      }
+    );
+
+  }
+
+
+  @override
+  void dispose() {
+    pageViewController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +74,7 @@ class AppTutorialScreen extends StatelessWidget {
         children: [
 
           PageView(
+            controller: pageViewController,
             physics: BouncingScrollPhysics(),
             children: listSlide.map((slideCardInfo)=> _SlideInfoViewer(
               title: slideCardInfo.title, 
@@ -50,13 +86,28 @@ class AppTutorialScreen extends StatelessWidget {
           Positioned(
             right: 20,
             top: 60,
-            child: FilledButton(
+            child: TextButton(
               onPressed: () {
                 context.pop();
               }, 
               child: Text('Skipe')
             )
-          )
+          ),
+
+          endPageView ? Positioned(
+            bottom: 50,
+            right: 20,
+            child: FadeInRight(
+              from: 15,
+              delay: Duration(seconds: 1),
+              child: FilledButton(
+                onPressed: () => context.pop(),
+                child: Text('Comenzar')
+              ),
+            )
+          ): SizedBox()
+
+
         ],
       ),
     );
