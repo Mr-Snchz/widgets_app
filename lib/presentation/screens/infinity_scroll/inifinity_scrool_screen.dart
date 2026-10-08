@@ -55,7 +55,23 @@ class _InifinityScroolScreenState extends State<InifinityScroolScreen> {
     setState(() {});
   }
 
+  Future<void> onRefresh() async {
+     isLoading = true; 
+     setState(() {});
 
+    await Future.delayed(const Duration(seconds: 3));
+    if( !isMounted) return; 
+
+    isLoading = false; 
+    final lastId = list.last;
+    list.clear(); 
+    list.add(lastId + 1);
+    addFiveImage(); 
+
+    setState(() {
+      
+    });
+  }
 
   void addFiveImage () {
 
@@ -74,19 +90,24 @@ class _InifinityScroolScreenState extends State<InifinityScroolScreen> {
         removeTop: true,
         removeBottom: true,
         context: context, 
-        child: ListView.builder(
-          itemCount: list.length,
-          controller: pageViewController,
-          itemBuilder: (context , index ){
-            return FadeInImage(
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: 300,
-              placeholder: AssetImage('assets/Images/jar-loading.gif'), 
-              image: NetworkImage('https://picsum.photos/id/${list[index]}/500/300' ) ,
-            );
-          }
-          )
+        child: RefreshIndicator(
+          onRefresh: onRefresh,
+          edgeOffset: 10,
+          strokeWidth: 2,
+          child: ListView.builder(
+            itemCount: list.length,
+            controller: pageViewController,
+            itemBuilder: (context , index ){
+              return FadeInImage(
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 300,
+                placeholder: AssetImage('assets/Images/jar-loading.gif'), 
+                image: NetworkImage('https://picsum.photos/id/${list[index]}/500/300' ) ,
+              );
+            }
+            ),
+        )
         ),
 
       floatingActionButton: FilledButton(
