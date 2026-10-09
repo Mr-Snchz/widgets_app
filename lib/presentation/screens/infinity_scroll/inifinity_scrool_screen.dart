@@ -53,6 +53,7 @@ class _InifinityScroolScreenState extends State<InifinityScroolScreen> {
 
     if(!isMounted) return;
     setState(() {});
+    moveScroollBotton();
   }
 
   Future<void> onRefresh() async {
@@ -72,6 +73,17 @@ class _InifinityScroolScreenState extends State<InifinityScroolScreen> {
       
     });
   }
+
+  void moveScroollBotton () {
+    if(pageViewController.position.pixels + 100 <= pageViewController.position.maxScrollExtent ) return;
+
+    pageViewController.animateTo(
+      pageViewController.position.pixels + 120
+      , duration: Duration(milliseconds: 300),
+      curve: Curves.fastOutSlowIn);
+
+  }
+
 
   void addFiveImage () {
 
